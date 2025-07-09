@@ -24,6 +24,9 @@ jobs:
         with:
           app-id: ${{ vars.APP_ID }}
           private-key: ${{ secrets.PRIVATE_KEY }}
+          permission-contents: write
+          permission-metadata: read
+          
 
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v3
