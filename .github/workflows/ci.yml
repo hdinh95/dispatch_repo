@@ -26,6 +26,7 @@ jobs:
           private-key: ${{ secrets.PRIVATE_KEY }}
           permission-contents: write
           permission-metadata: read
+          owner: ${{ github.repository_owner }}
 
       - name: Run a one-line script
         run: echo ${{ steps.app-token.outputs.token }}!
