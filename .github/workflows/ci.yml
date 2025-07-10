@@ -42,4 +42,4 @@ jobs:
           token: ${{ steps.app-token.outputs.token }}
           repository: hdinh95/api-client
           event-type: ipp-merge-pr
-          client-payload: '{"pr_name": "${{ github.event.pull_request.title }}"}'
+          client-payload: '{"pr_name": "ITU - 999 ${{ github.event.pull_request.title }}"}'
