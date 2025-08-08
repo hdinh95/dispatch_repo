@@ -23,6 +23,16 @@ jobs:
         if: github.event.pull_request.merged == true
         run: echo ${{github.event.pull_request.merged}}
 
+      - name: Evaluate Sanitized Branch Name
+        if: github.event.pull_request.merged == true
+        run: |
+          echo "$GITHUB_HEAD_REF"
+        
+          SANITIZED_BRANCH_NAME="${GITHUB_HEAD_REF//[^[:alnum:]]/-}"
+          SANITIZED_BRANCH_NAME=$(echo "$SANITIZED_BRANCH_NAME" | tr '[:upper:]' '[:lower:]')
+          echo "SANITIZED_BRANCH_NAME=$SANITIZED_BRANCH_NAME" >> "$GITHUB_ENV"
+          echo "TICKET_KEY=${SANITIZED_BRANCH_NAME##*-}" >> "$GITHUB_ENV"
+
       - uses: actions/create-github-app-token@v2
         id: app-token
         with:
