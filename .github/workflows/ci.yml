@@ -52,5 +52,5 @@ jobs:
         with:
           token: ${{ steps.app-token.outputs.token }}
           repository: hdinh95/api-client
-          event-type: ipp-merge-pr
+          event-type: ipp-pr-merge
           client-payload: '{"pr_name": "ITU - 999 ${{ github.event.pull_request.title }}", "ticket_key": "${{ env.TICKET_KEY }}"}'
