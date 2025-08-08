@@ -26,7 +26,7 @@ jobs:
       - name: Evaluate Sanitized Branch Name
         if: github.event.pull_request.merged == true
         run: |
-          echo "$GITHUB_HEAD_REF"
+          echo "This Github REF: $GITHUB_HEAD_REF"
         
           SANITIZED_BRANCH_NAME="${GITHUB_HEAD_REF//[^[:alnum:]]/-}"
           SANITIZED_BRANCH_NAME=$(echo "$SANITIZED_BRANCH_NAME" | tr '[:upper:]' '[:lower:]')
