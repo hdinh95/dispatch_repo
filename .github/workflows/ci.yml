@@ -32,6 +32,7 @@ jobs:
           SANITIZED_BRANCH_NAME=$(echo "$SANITIZED_BRANCH_NAME" | tr '[:upper:]' '[:lower:]')
           echo "SANITIZED_BRANCH_NAME=$SANITIZED_BRANCH_NAME" >> "$GITHUB_ENV"
           echo "TICKET_KEY=${SANITIZED_BRANCH_NAME##*-}" >> "$GITHUB_ENV"
+          echo $TICKET_KEY
 
       - uses: actions/create-github-app-token@v2
         id: app-token
@@ -52,4 +53,4 @@ jobs:
           token: ${{ steps.app-token.outputs.token }}
           repository: hdinh95/api-client
           event-type: ipp-merge-pr
-          client-payload: '{"pr_name": "ITU - 999 ${{ github.event.pull_request.title }}", "reports": {"name": "Example Report","report-url": "https://example.com/report"}}'
+          client-payload: '{"pr_name": "ITU - 999 ${{ github.event.pull_request.title }}", "ticket_key": "${{ env.TICKET_KEY }}"}'
